@@ -23,11 +23,12 @@ app = FastAPI()
 # ── CORS: allow your Vite dev server / Vercel deployment to call this ──────
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://localhost:3000",               # your Vite dev server (actual port in use)
-        "http://localhost:5173",               # default Vite port, kept just in case
-        "https://faceattend-ai.vercel.app",   # your deployed frontend
-    ],
+    # allow_origins=["*"] is safe here because this endpoint doesn't use
+    # cookies/auth headers - it just accepts a JPEG frame and returns boxes.
+    # This lets your deployed frontend work from ANY device on ANY network
+    # (phone on mobile data, laptop on a different WiFi, etc.) without
+    # needing to keep adding specific origins one by one.
+    allow_origins=["*"],
     allow_methods=["POST"],
     allow_headers=["*"],
 )
@@ -40,7 +41,7 @@ app.add_middleware(
 # Swap this out later for a real face-detection model, e.g.:
 #   model = YOLO("yolov8n-face-lindevs.pt")
 #   (download from https://github.com/lindevs/yolov8-face/releases)
-# or your own Project-trained weights — once you do, remove the
+# or your own FYP-trained weights — once you do, remove the
 # `if int(box.cls[0]) == 0` class filter below, since a face model has
 # no "person" class to filter by.
 model = YOLO("yolov8n.pt")  # auto-downloads (~6MB) the first time this runs
