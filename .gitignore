@@ -1,0 +1,20 @@
+# ── Frontend (Node/Vite) ─────────────────────────────
+node_modules/
+dist/
+.env
+.env.local
+
+# ── AI server (Python) ───────────────────────────────
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# ── Model weights — too large / shouldn't be versioned ──
+*.pt
+*.pth
+*.onnx
+
+# ── OS / editor junk ──────────────────────────────────
+.DS_Store
+.vscode/
