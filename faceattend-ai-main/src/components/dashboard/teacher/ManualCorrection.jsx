@@ -21,7 +21,7 @@ const INITIAL_RECORDS = [
   { id:"CS-2021-003", name:"Usman Malik",  original:"absent",  current:"absent"  },
   { id:"CS-2021-004", name:"Nadia Khan",   original:"absent",  current:"absent"  },
   { id:"CS-2021-005", name:"Bilal Ahmed",  original:"present", current:"present" },
-  { id:"CS-2021-007", name:"HamWA Rauf",   original:"present", current:"present" },
+  { id:"CS-2021-007", name:"Hamza Rauf",   original:"present", current:"present" },
 ];
 
 const STATUS_C = { present:"#10b981", absent:"#ef4444" };

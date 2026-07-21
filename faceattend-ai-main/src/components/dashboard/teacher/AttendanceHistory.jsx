@@ -28,7 +28,7 @@ const SESSIONS = [
     students:[
       {id:"CS-2021-001",name:"Ali Hassan",  status:"present"},
       {id:"CS-2021-005",name:"Bilal Ahmed", status:"absent"},
-      {id:"CS-2021-007",name:"HamWA Rauf",  status:"present"},
+      {id:"CS-2021-007",name:"Hamza Rauf",  status:"present"},
     ],
   },
   {

@@ -17,7 +17,7 @@ const INITIAL_STUDENTS = [
   { id: "CS-2021-004", name: "Nadia Khan",    email: "nadia@uni.edu",  course: "CS-101", attendance: 61, status: "warning",   face: true  },
   { id: "CS-2021-005", name: "Bilal Ahmed",   email: "bilal@uni.edu",  course: "CS-501", attendance: 95, status: "active",    face: true  },
   { id: "CS-2021-006", name: "Ayesha Tariq",  email: "ayesha@uni.edu", course: "CS-301", attendance: 55, status: "warning",   face: false },
-  { id: "CS-2021-007", name: "HamWA Rauf",    email: "hamWA@uni.edu",  course: "CS-201", attendance: 88, status: "active",    face: true  },
+  { id: "CS-2021-007", name: "Hamza Rauf",    email: "Hamza@uni.edu",  course: "CS-201", attendance: 88, status: "active",    face: true  },
   { id: "CS-2021-008", name: "WAra Malik",    email: "WAra@uni.edu",   course: "CS-401", attendance: 40, status: "suspended", face: false },
 ];
 

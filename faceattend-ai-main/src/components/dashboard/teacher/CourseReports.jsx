@@ -24,7 +24,7 @@ const STUDENT_STATS = {
     { id:"CS-2021-002", name:"Sara Ahmed",   present:20, absent:4,  rate:83 },
     { id:"CS-2021-004", name:"Nadia Khan",   present:14, absent:10, rate:58 },
     { id:"CS-2021-005", name:"Bilal Ahmed",  present:24, absent:0,  rate:100},
-    { id:"CS-2021-007", name:"HamWA Rauf",   present:21, absent:3,  rate:88 },
+    { id:"CS-2021-007", name:"Hamza Rauf",   present:21, absent:3,  rate:88 },
   ],
   "CS-401": [
     { id:"CS-2021-001", name:"Ali Hassan",   present:16, absent:2,  rate:89 },
