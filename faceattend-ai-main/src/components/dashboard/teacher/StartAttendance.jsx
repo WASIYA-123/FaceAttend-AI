@@ -19,7 +19,7 @@ const MOCK_STUDENTS = [
   { id:"CS-2021-002", name:"Sara Ahmed",   confidence:96.4, time:"09:03 AM" },
   { id:"CS-2021-004", name:"Nadia Khan",   confidence:94.1, time:"09:04 AM" },
   { id:"CS-2021-005", name:"Bilal Ahmed",  confidence:99.1, time:"09:05 AM" },
-  { id:"CS-2021-007", name:"HamWA Rauf",   confidence:97.3, time:"09:06 AM" },
+  { id:"CS-2021-007", name:"Hamza Rauf",   confidence:97.3, time:"09:06 AM" },
 ];
 
 export default function StartAttendance() {
@@ -59,6 +59,46 @@ export default function StartAttendance() {
   const handleEnd = () => {
     setIsRunning(false);
     setEnded(true);
+  };
+
+  const handleExport = () => {
+    const courseLabel = course || "Attendance Session";
+    const dateStr = new Date().toLocaleDateString();
+
+    const header = ["Student ID", "Name", "Status", "Confidence", "Time"];
+    const presentIds = new Set(detected.map(s => s.id));
+
+    const rows = MOCK_STUDENTS.map(s => {
+      const hit = detected.find(d => d.id === s.id);
+      return [
+        s.id,
+        s.name,
+        hit ? "Present" : "Absent",
+        hit ? `${hit.confidence}%` : "-",
+        hit ? hit.time : "-",
+      ];
+    });
+
+    const csvLines = [
+      `Course: ${courseLabel}`,
+      `Date: ${dateStr}`,
+      `Present: ${detected.length} / ${MOCK_STUDENTS.length}`,
+      "",
+      header.join(","),
+      ...rows.map(r => r.map(cell => `"${String(cell).replace(/"/g, '""')}"`).join(",")),
+    ];
+
+    const csvContent = csvLines.join("\r\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `attendance-${courseLabel.split("—")[0].trim()}-${dateStr.replace(/\//g, "-")}.csv`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
   };
 
   return (
@@ -207,6 +247,7 @@ export default function StartAttendance() {
                       New Session
                     </button>
                     <GradientButton from="#a855f7" to="#3b82f6"
+                      onClick={handleExport}
                       className="flex-1 py-2.5 rounded-xl text-[13px]">
                       <Icons.Download className="w-4 h-4" /> Export
                     </GradientButton>
